@@ -1,1 +1,19 @@
+@startuml
+title Контекстна діаграма системи "RentHousing" (C4 Context)
 
+actor "Орендар" as Tenant
+actor "Орендодавець" as Landlord
+actor "Адміністратор" as Admin
+
+rectangle "Система «RentHousing»" as System #E3F2FD
+
+rectangle "Платіжна система (LiqPay)" as PaymentGateway
+rectangle "Viber/Telegram-бот" as NotificationService
+
+Tenant --> System : Пошук житла, бронювання, оплата
+Landlord --> System : Публікація житла, підтвердження броні
+Admin --> System : Модерація оголошень
+
+System --> PaymentGateway : Перевірка та проведення платежів
+System --> NotificationService : Відправка сповіщень про бронювання
+@enduml
